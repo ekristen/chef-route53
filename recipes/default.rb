@@ -17,20 +17,19 @@
 # limitations under the License.
 #
 
-xml = package "libxml2-dev" do
-  action :nothing
-end
-xml.run_action( :install )
+include_recipe "build-essential::default"
 
-xslt = package "libxslt1-dev" do
-  action :nothing
+package "libxml2-dev" do
+  action :install
 end
-xslt.run_action( :install )
 
-fog = gem_package "fog" do
-  action :nothing
+package "libxslt1-dev" do
+  action :install
 end
-fog.run_action( :install )
+
+gem_package "fog" do
+  action :install
+end
 
 require 'rubygems'
 Gem.clear_paths
